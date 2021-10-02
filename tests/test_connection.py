@@ -91,4 +91,4 @@ class TestConnection(TestCase):
 
         connection.send_message("I am message")
 
-        mock_socket.send.assert_called_with(b"PRIVMSG #another-irc-channel : :prefix:I am message\r\n")
+        mock_socket.send.assert_called_with(b"PRIVMSG #another-irc-channel ::prefix:I am message\r\n")
