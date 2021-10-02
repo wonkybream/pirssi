@@ -6,7 +6,7 @@ from pirssi.consumer import Consumer
 
 class TestConsumer(TestCase):
 
-    def test_consumer_can_create_connection(self):
+    def test_can_create_connection(self):
         mock_connection = Mock()
         consumer = Consumer(connection=mock_connection)
 
@@ -14,7 +14,7 @@ class TestConsumer(TestCase):
 
         mock_connection.connect.assert_called()
 
-    def test_consumer_can_read(self):
+    def test_can_read_messages(self):
         mock_connection = Mock()
         consumer = Consumer(connection=mock_connection)
 
