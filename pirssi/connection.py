@@ -10,6 +10,7 @@ logger = logging.getLogger(__name__)
 class Connection:
     _socket: socket
     _username: str = f"pirssi-{secrets.token_hex(6)}"
+    _message_prefix: str = ":pirssi:"
 
     _channel: str
     _server: str
@@ -21,7 +22,7 @@ class Connection:
             self,
             server: str = "irc.quakenet.org",
             server_port: int = 6667,
-            channel: str = "pirssi-queue",
+            channel: str = "#pirssi-queue",
             connection_timeout: int = 30
     ):
         self._socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -69,10 +70,10 @@ class Connection:
     def _send(self, command: str, message: str):
         self._socket.send(f"{command} {message}\r\n".encode())
 
+    def send_message(self, message: str):
+        self._send("PRIVMSG", f"{self._channel} : {self._message_prefix}{message}")
+
     def close(self):
         logger.info("Closing connection")
         self._send("QUIT", "")
         self._socket.close()
-
-    def send_message(self, message: str):
-        pass

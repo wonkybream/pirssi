@@ -81,3 +81,14 @@ class TestConnection(TestCase):
         connection._wait_for_message_of_the_day()
 
         mock_socket.send.assert_called_with(b"JOIN #some-irc-channel\r\n")
+
+    @patch("pirssi.connection.socket.socket", lambda x, y: None)
+    def test_connection_sends_message_to_channel(self):
+        connection = Connection(connection_timeout=0, channel="#another-irc-channel")
+        mock_socket = Mock()
+        connection._socket = mock_socket
+        connection._message_prefix = ":prefix:"
+
+        connection.send_message("I am message")
+
+        mock_socket.send.assert_called_with(b"PRIVMSG #another-irc-channel : :prefix:I am message\r\n")
