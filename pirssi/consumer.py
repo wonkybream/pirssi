@@ -13,3 +13,6 @@ class Consumer:
 
     def read_messages(self):
         self._connection.read_messages()
+
+    def close(self):
+        self._connection.close()

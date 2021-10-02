@@ -21,3 +21,11 @@ class TestConsumer(TestCase):
         consumer.read_messages()
 
         mock_connection.read_messages.assert_called()
+
+    def test_can_close_connection(self):
+        mock_connection = Mock()
+        consumer = Consumer(connection=mock_connection)
+
+        consumer.close()
+
+        mock_connection.close.assert_called()
