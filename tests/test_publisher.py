@@ -6,7 +6,7 @@ from pirssi.publisher import Publisher
 
 class TestPublisher(TestCase):
 
-    def test_publisher_can_create_connection(self):
+    def test_can_create_connection(self):
         mock_connection = Mock()
         publisher = Publisher(connection=mock_connection)
 
@@ -14,7 +14,7 @@ class TestPublisher(TestCase):
 
         mock_connection.connect.assert_called()
 
-    def test_publisher_can_publish(self):
+    def test_can_publish_message(self):
         mock_connection = Mock()
         publisher = Publisher(connection=mock_connection)
 
@@ -24,7 +24,7 @@ class TestPublisher(TestCase):
             '{"message": "I am alive"}'
         )
 
-    def test_publisher_can_close_connection(self):
+    def test_can_close_connection(self):
         mock_connection = Mock()
         publisher = Publisher(connection=mock_connection)
 
