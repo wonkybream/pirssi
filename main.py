@@ -1,7 +1,7 @@
 import logging
-from time import sleep
 
 from pirssi.connection import Connection
+from pirssi.publisher import Publisher
 
 logging.basicConfig(
     format='%(asctime)s %(levelname)s %(name)s %(message)s',
@@ -11,7 +11,9 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 if __name__ == '__main__':
-    connection = Connection()
-    connection.connect()
-    sleep(5)
-    connection.close()
+    publisher = Publisher(Connection())
+    publisher.connect()
+
+    publisher.publish("I am alive")
+
+    publisher.close()
