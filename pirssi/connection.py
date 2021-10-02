@@ -71,7 +71,8 @@ class Connection:
         self._socket.send(f"{command} {message}\r\n".encode())
 
     def send_message(self, message: str):
-        self._send("PRIVMSG", f"{self._channel} : {self._message_prefix}{message}")
+        logger.info(f"Sending message: {message}")
+        self._send("PRIVMSG", f"{self._channel} :{self._message_prefix}{message}")
 
     def close(self):
         logger.info("Closing connection")
