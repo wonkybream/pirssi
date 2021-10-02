@@ -92,3 +92,15 @@ class TestConnection(TestCase):
         connection.send_message("I am message")
 
         mock_socket.send.assert_called_with(b"PRIVMSG #another-irc-channel ::prefix:I am message\r\n")
+
+    @patch("pirssi.connection.socket.socket", lambda x, y: None)
+    def test_reads_messages_from_channel_if_they_contain_message_prefix(self):
+        connection = Connection(connection_timeout=0, channel="#yet-another-irc-channel")
+        mock_socket = Mock()
+        connection._socket = mock_socket
+        connection._message_prefix = ":prefix:"
+        mock_socket.recv.return_value = b"Do not read me\r\n:prefix:Read me\r\n"
+
+        messages = connection.read_messages()
+
+        self.assertEqual(messages, ["Read me"])

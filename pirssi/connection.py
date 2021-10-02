@@ -80,5 +80,14 @@ class Connection:
         self._socket.shutdown(1)
         self._socket.close()
 
-    def read_messages(self):
-        pass
+    def read_messages(self) -> list:
+        reply_buffer = self._socket.recv(4096).decode("utf-8").splitlines()
+        messages = []
+
+        for line in reply_buffer:
+            if self._message_prefix in line:
+                message = line[len(self._message_prefix):]
+                logger.info(f"Read message: {message}")
+                messages.append(message)
+
+        return messages
