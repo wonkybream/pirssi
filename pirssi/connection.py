@@ -73,3 +73,6 @@ class Connection:
         logger.info("Closing connection")
         self._send("QUIT", "")
         self._socket.close()
+
+    def send_message(self, message: str):
+        pass
