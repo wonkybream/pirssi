@@ -10,8 +10,8 @@ logger = logging.getLogger(__name__)
 class Connection:
     _socket: socket
     _username: str = f"pirssi-{secrets.token_hex(6)}"
-    _channel: str = f"pirssi-{secrets.token_hex(8)}"
 
+    _channel: str
     _server: str
     _server_port: int
     _channel: str
@@ -21,11 +21,13 @@ class Connection:
             self,
             server: str = "irc.quakenet.org",
             server_port: int = 6667,
+            channel: str = "pirssi-queue",
             connection_timeout: int = 30
     ):
         self._socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self._server = server
         self._server_port = server_port
+        self._channel = channel
         self._connection_timeout = connection_timeout
 
     def connect(self):

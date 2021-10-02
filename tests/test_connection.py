@@ -73,10 +73,9 @@ class TestConnection(TestCase):
 
     @patch('pirssi.connection.socket.socket', lambda x, y: None)
     def test_connection_joins_to_channel_after_message_of_the_day_reply(self):
-        connection = Connection(connection_timeout=1)
+        connection = Connection(connection_timeout=1, channel="#some-irc-channel")
         mock_socket = Mock()
         connection._socket = mock_socket
-        connection._channel = "#some-irc-channel"
         mock_socket.recv.return_value = b"Message of the Day"
 
         connection._wait_for_message_of_the_day()
