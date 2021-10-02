@@ -41,6 +41,8 @@ class Connection:
         self._wait_for_ident_challenge()
         self._wait_for_message_of_the_day()
 
+        logger.info(f"Connected to {self._channel} as {self._username}")
+
     def _wait_for_ident_challenge(self):
         cycles = 0
         while cycles < self._connection_timeout:
