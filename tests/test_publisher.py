@@ -23,3 +23,11 @@ class TestPublisher(TestCase):
         mock_connection.send_message.assert_called_with(
             '{"message": "I am alive"}'
         )
+
+    def test_publisher_can_close_connection(self):
+        mock_connection = Mock()
+        publisher = Publisher(connection=mock_connection)
+
+        publisher.close()
+
+        mock_connection.close.assert_called()

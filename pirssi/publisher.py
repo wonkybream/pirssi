@@ -16,3 +16,6 @@ class Publisher:
     def publish(self, message: str):
         json_message = json.dumps({"message": message})
         self._connection.send_message(json_message)
+
+    def close(self):
+        self._connection.close()

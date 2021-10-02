@@ -76,4 +76,5 @@ class Connection:
     def close(self):
         logger.info("Closing connection")
         self._send("QUIT", "")
+        self._socket.shutdown(1)
         self._socket.close()
