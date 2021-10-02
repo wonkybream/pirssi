@@ -14,7 +14,9 @@ class Consumer:
         self._connection.connect()
 
     def read_messages(self):
-        self._connection.read_messages()
+        messages = self._connection.read_messages()
+        for message in messages:
+            self._handler(message)
 
     def close(self):
         self._connection.close()
