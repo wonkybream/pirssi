@@ -79,3 +79,6 @@ class Connection:
         self._send("QUIT", "")
         self._socket.shutdown(1)
         self._socket.close()
+
+    def read_messages(self):
+        pass
