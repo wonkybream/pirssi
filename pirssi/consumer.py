@@ -1,9 +1,11 @@
 from pirssi.connection import Connection
+from pirssi.handler import Handler
 
 
 class Consumer:
 
     _connection: Connection
+    _handler = Handler = Handler()
 
     def __init__(self, connection: Connection):
         self._connection = connection
