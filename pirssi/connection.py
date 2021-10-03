@@ -8,11 +8,10 @@ logger = logging.getLogger(__name__)
 
 
 class Connection:
-    _socket: socket
+    _socket: socket.SocketType
     _username: str = f"pirssi-{secrets.token_hex(6)}"
     _message_prefix: str = ":pirssi:"
 
-    _channel: str
     _server: str
     _server_port: int
     _channel: str
