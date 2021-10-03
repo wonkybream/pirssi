@@ -88,7 +88,7 @@ class Connection:
 
         for line in reply_buffer:
             if self._message_prefix in line:
-                message = line[len(self._message_prefix):]
+                message = line[line.find(self._message_prefix) + len(self._message_prefix):]
                 logger.info(f"Read message: {message}")
                 messages.append(message)
 

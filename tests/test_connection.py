@@ -99,7 +99,7 @@ class TestConnection(TestCase):
         mock_socket = Mock()
         connection._socket = mock_socket
         connection._message_prefix = ":prefix:"
-        mock_socket.recv.return_value = b"Do not read me\r\n:prefix:Read me\r\n"
+        mock_socket.recv.return_value = b"PRIVMSG #queue :Do not read me\r\nPRIVMSG #queue ::prefix:Read me\r\n"
 
         messages = connection.read_messages()
 
