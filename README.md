@@ -6,11 +6,11 @@ Code itself does not require any external libraries, only tests and static analy
 
 ## How this plays out
 
-A publisher sends messages to an IRC channel which is a sort of message broker in this case. Every message is by default prefixed with `:pirssi:`, that's the queue information.
+A publisher sends messages to an IRC channel which is a sort of message broker in this case. Every message is by default prefixed with `:pirssi:`, that's a message queue information.
 
-A consumer connects to given IRC channel and starts reading messages. It filters out every message except ones with the prefix. Messages are then forwarded to a handler.
+A consumer connects to the given IRC channel and starts consuming messages. The consumer filters out every message except ones with the prefix. Messages are then forwarded to a handler.
 
-Handler is simple implementation of a list of callable objects. It works by calling every object inside it with received argument.
+Handler is simple implementation of a list of callable objects. The handler works by calling every object inside it with received argument.
 
 ```python
 from pirssi.handler import Handler
@@ -42,7 +42,7 @@ At first start the consumer.
 $ python example.py consumer
 ```
 
-And wait for the consumer to connect into channel. It produces a log line something like this.
+And wait for the consumer to connect into channel. the consumer produces a log line something like this.
 ```text
 2021-10-03 10:46:59+0300 INFO pirssi.connection Connected to #pirssi-queue as pirssi-475e019b9354
 ```
@@ -52,7 +52,7 @@ Then start the publisher.
 $ python example.py publisher
 ```
 
-Publisher publishes few messages and then quits, consumer receives those and forwards them to a handler which prints them out.
+The publisher publishes few messages and then quits, the consumer receives those messages and forwards them to a handler which prints them out.
 
 Looking from https://webchat.quakenet.org/, communication looks closely following.
 ```text
@@ -75,7 +75,7 @@ Install test requirements.
 $ pip install -r requirements-test.txt
 ```
 
-Run tests using following command in project path.
+Run tests using following command in the project path.
 ```shell
 $ python -m unittest -v
 ```
