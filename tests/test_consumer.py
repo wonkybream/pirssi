@@ -37,3 +37,15 @@ class TestConsumer(TestCase):
             call("Message number one"),
             call("Message number two")
         ])
+
+    @patch('pirssi.consumer.Consumer._handler')
+    def test_can_add_handler_function(self, mock_handler):
+        mock_connection = Mock()
+        consumer = Consumer(connection=mock_connection)
+
+        def handler_function(x):
+            print(x)
+
+        consumer.add_handler(handler_function)
+
+        mock_handler.append.assert_called_with(handler_function)

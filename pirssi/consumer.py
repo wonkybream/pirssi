@@ -1,3 +1,5 @@
+from typing import Callable
+
 from pirssi.connection import Connection
 from pirssi.handler import Handler
 
@@ -20,3 +22,6 @@ class Consumer:
 
     def close(self):
         self._connection.close()
+
+    def add_handler(self, handler: Callable):
+        self._handler.append(handler)
