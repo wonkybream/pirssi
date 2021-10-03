@@ -14,7 +14,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 parser = argparse.ArgumentParser(
-    description="Example for running Pirssi subscriber or consumer."
+    description="Example for running Pirssi publisher or consumer."
 )
 parser.add_argument("action", choices=["publisher", "consumer"])
 arguments = parser.parse_args()
