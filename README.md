@@ -6,7 +6,7 @@ Code itself does not require any external libraries, only tests and static analy
 
 ## How this plays out
 
-A publisher sends messages to an IRC channel which is a sort of message broker in this case. Every message is by default prefixed with `:pirssi:`, that's a message queue information.
+A publisher sends messages to an IRC channel which is a sort of message broker in this case. Every message is by default prefixed with `:pirssi:`, that's the message queue information.
 
 A consumer connects to the given IRC channel and starts consuming messages. The consumer filters out every message except ones with the prefix. Messages are then forwarded to a handler.
 
