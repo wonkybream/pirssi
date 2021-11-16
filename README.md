@@ -2,7 +2,7 @@
 
 Pirssi is a Python client for using IRC as a message broker.
 
-Code itself does not require any external libraries, only tests and static analysis require installation of `requirements-test.txt`
+Code itself does not require any external libraries, only tests and static analysis require installation of `requirements.txt`
 
 ## How this plays out
 
