@@ -72,7 +72,7 @@ Project uses Python unittest as a testing framework, flake8 as style checker and
 
 Install test requirements.
 ```shell
-$ pip install -r requirements-test.txt
+$ pip install -r requirements.txt
 ```
 
 Run tests using following command in the project path.
