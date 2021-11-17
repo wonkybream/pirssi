@@ -1,5 +1,8 @@
 # Pirssi
 
+[![Static analysis](https://github.com/wonkybream/pirssi/actions/workflows/static-analysis.yml/badge.svg?branch=main)](https://github.com/wonkybream/pirssi/actions/workflows/static-analysis.yml)
+[![Tests](https://github.com/wonkybream/pirssi/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/wonkybream/pirssi/actions/workflows/tests.yml)
+
 Pirssi is a Python client for using IRC as a message broker.
 
 Code itself does not require any external libraries, only tests and static analysis require installation of `requirements.txt`
