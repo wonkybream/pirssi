@@ -17,7 +17,6 @@ def function_with_two_arguments(one, two):
 
 
 class TestHandler(TestCase):
-
     def test_handler_accepts_function_with_one_argument(self):
         handler = Handler()
 

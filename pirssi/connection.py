@@ -1,6 +1,5 @@
 import logging
 import secrets
-
 import socket
 from time import sleep
 
@@ -18,11 +17,11 @@ class Connection:
     _connection_timeout: int
 
     def __init__(
-            self,
-            server: str = "irc.quakenet.org",
-            server_port: int = 6667,
-            channel: str = "#pirssi-queue",
-            connection_timeout: int = 30
+        self,
+        server: str = "irc.quakenet.org",
+        server_port: int = 6667,
+        channel: str = "#pirssi-queue",
+        connection_timeout: int = 30,
     ):
         self._socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self._server = server
@@ -31,7 +30,9 @@ class Connection:
         self._connection_timeout = connection_timeout
 
     def connect(self):
-        logger.info(f"Connecting to {self._server}:{self._server_port} channel {self._channel}")
+        logger.info(
+            f"Connecting to {self._server}:{self._server_port} channel {self._channel}"
+        )
         self._socket.connect((self._server, self._server_port))
 
         self._send("USER", f"{self._username} . . :pirssi")
@@ -49,7 +50,9 @@ class Connection:
             reply_buffer = self._socket.recv(4096).decode("utf-8")
 
             if "PING" in reply_buffer:
-                ident_response = [line for line in reply_buffer.splitlines() if "PING" in line][0]
+                ident_response = [
+                    line for line in reply_buffer.splitlines() if "PING" in line
+                ][0]
                 self._send("PONG", f"{ident_response.split()[1]}")
                 break
 
@@ -87,7 +90,9 @@ class Connection:
 
         for line in reply_buffer:
             if self._message_prefix in line:
-                message = line[line.find(self._message_prefix) + len(self._message_prefix):]
+                message = line[
+                    line.find(self._message_prefix) + len(self._message_prefix) :
+                ]
                 logger.info(f"Read message: {message}")
                 messages.append(message)
 

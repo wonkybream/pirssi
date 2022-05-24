@@ -2,6 +2,7 @@
 
 [![Static analysis](https://github.com/wonkybream/pirssi/actions/workflows/static-analysis.yml/badge.svg?branch=main)](https://github.com/wonkybream/pirssi/actions/workflows/static-analysis.yml)
 [![Tests](https://github.com/wonkybream/pirssi/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/wonkybream/pirssi/actions/workflows/tests.yml)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 Pirssi is a Python client for using IRC as a message broker.
 
@@ -85,6 +86,8 @@ $ python -m unittest -v
 
 And finally run static analysis.
 ```shell
-$ flake8
+$ black ./
+$ isort ./
 $ mypy ./
+$ flake8
 ```

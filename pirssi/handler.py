@@ -7,6 +7,7 @@ class Handler(list):
 
     Callable object must accept one positional argument.
     """
+
     def __call__(self, *args, **kwargs):
         for function in self:
             function(*args, **kwargs)

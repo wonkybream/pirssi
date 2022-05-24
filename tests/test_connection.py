@@ -1,12 +1,11 @@
 import socket
 from unittest import TestCase
-from unittest.mock import patch, Mock, call
+from unittest.mock import Mock, call, patch
 
 from pirssi.connection import Connection
 
 
 class TestConnection(TestCase):
-
     @patch("pirssi.connection.socket.socket")
     def test_sets_up_stream_socket_over_ip4(self, mock_socket):
         Connection()
@@ -16,9 +15,8 @@ class TestConnection(TestCase):
     @patch("pirssi.connection.socket.socket", lambda x, y: None)
     def test_uses_correct_server_and_port(self):
         connection = Connection(
-            server="I am IRC server",
-            server_port=6667,
-            connection_timeout=0)
+            server="I am IRC server", server_port=6667, connection_timeout=0
+        )
         mock_socket = Mock()
         connection._socket = mock_socket
 
@@ -35,10 +33,9 @@ class TestConnection(TestCase):
 
         connection.connect()
 
-        mock_socket.send.assert_has_calls([
-            call(b'USER pirssi-bot . . :pirssi\r\n'),
-            call(b'NICK pirssi-bot\r\n')
-        ])
+        mock_socket.send.assert_has_calls(
+            [call(b"USER pirssi-bot . . :pirssi\r\n"), call(b"NICK pirssi-bot\r\n")]
+        )
 
     @patch("pirssi.connection.socket.socket", lambda x, y: None)
     @patch("pirssi.connection.Connection._wait_for_ident_challenge")
@@ -91,15 +88,21 @@ class TestConnection(TestCase):
 
         connection.send_message("I am message")
 
-        mock_socket.send.assert_called_with(b"PRIVMSG #another-irc-channel ::prefix:I am message\r\n")
+        mock_socket.send.assert_called_with(
+            b"PRIVMSG #another-irc-channel ::prefix:I am message\r\n"
+        )
 
     @patch("pirssi.connection.socket.socket", lambda x, y: None)
     def test_reads_messages_from_channel_if_they_contain_message_prefix(self):
-        connection = Connection(connection_timeout=0, channel="#yet-another-irc-channel")
+        connection = Connection(
+            connection_timeout=0, channel="#yet-another-irc-channel"
+        )
         mock_socket = Mock()
         connection._socket = mock_socket
         connection._message_prefix = ":prefix:"
-        mock_socket.recv.return_value = b"PRIVMSG #queue :Do not read me\r\nPRIVMSG #queue ::prefix:Read me\r\n"
+        mock_socket.recv.return_value = (
+            b"PRIVMSG #queue :Do not read me\r\nPRIVMSG #queue ::prefix:Read me\r\n"
+        )
 
         messages = connection.read_messages()
 

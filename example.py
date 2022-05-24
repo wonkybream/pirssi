@@ -7,9 +7,9 @@ from pirssi.consumer import Consumer
 from pirssi.publisher import Publisher
 
 logging.basicConfig(
-    format='%(asctime)s %(levelname)s %(name)s %(message)s',
+    format="%(asctime)s %(levelname)s %(name)s %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S%z",
-    level=logging.DEBUG
+    level=logging.DEBUG,
 )
 logger = logging.getLogger(__name__)
 
@@ -27,7 +27,7 @@ def run_example_publisher():
     messages_to_publish = [
         "I command you to do something",
         "I would like to query some information",
-        "Something weird happened and you should know about it"
+        "Something weird happened and you should know about it",
     ]
 
     for message in messages_to_publish:
@@ -55,7 +55,7 @@ def run_example_consumer():
         consumer.close()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     if arguments.action == "publisher":
         run_example_publisher()
     elif arguments.action == "consumer":
