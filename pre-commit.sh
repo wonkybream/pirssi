@@ -2,6 +2,8 @@
 
 set -e
 
+pip install --upgrade pip
+
 black ./
 isort ./
 mypy ./
