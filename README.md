@@ -4,7 +4,7 @@
 
 Pirssi is a Python client for using IRC as a message broker.
 
-Code itself does not require any external libraries, only tests and static analysis require installation of `requirements.txt`
+Code itself does not require any external libraries, only static analysis require installation of `requirements.txt`.
 
 ## How this plays out
 
@@ -41,7 +41,7 @@ The default channel is `#pirssi-queue`.
 
 At first start the consumer.
 ```shell
-$ python example.py consumer
+python example.py consumer
 ```
 
 And wait for the consumer to connect into channel. the consumer produces a log line something like this.
@@ -51,7 +51,7 @@ And wait for the consumer to connect into channel. the consumer produces a log l
 
 Then start the publisher.
 ```shell
-$ python example.py publisher
+python example.py publisher
 ```
 
 The publisher publishes few messages and then quits, the consumer receives those messages and forwards them to a handler which prints them out.
@@ -74,18 +74,15 @@ Project uses Python unittest as a testing framework, flake8 as style checker and
 
 Install test requirements.
 ```shell
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 Run tests using following command in the project path.
 ```shell
-$ python -m unittest -v
+python -m unittest -v
 ```
 
-And finally run static analysis.
+Or run everything at once.
 ```shell
-$ black ./
-$ isort ./
-$ mypy ./
-$ flake8
+./scripts/precommit.sh
 ```
