@@ -5,7 +5,6 @@ from pirssi.handler import Handler
 
 
 class Consumer:
-
     _connection: Connection
     _handler = Handler = Handler()
 

@@ -4,7 +4,6 @@ from pirssi.connection import Connection
 
 
 class Publisher:
-
     _connection: Connection
 
     def __init__(self, connection: Connection):
