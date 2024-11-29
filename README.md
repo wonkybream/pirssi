@@ -1,5 +1,6 @@
 # Pirssi
 
+[![Ruff](https://github.com/wonkybream/pirssi/actions/workflows/ruff.yml/badge.svg)](https://github.com/wonkybream/pirssi/actions/workflows/ruff.yml)
 [![Tests](https://github.com/wonkybream/pirssi/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/wonkybream/pirssi/actions/workflows/tests.yml)
 
 Pirssi is a Python client for using IRC as a message broker.
